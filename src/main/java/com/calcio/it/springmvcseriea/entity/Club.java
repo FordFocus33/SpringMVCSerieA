@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +26,7 @@ public class Club {
 
     @ManyToOne
     @JoinColumn(name = "created_by", nullable = false)
-    private UserEntity createdBy;
+    private User createdBy;
     @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
     private List<Player> events = new ArrayList<>();
 
