@@ -26,8 +26,8 @@ public class Club {
 
     @ManyToOne
     @JoinColumn(name = "created_by", nullable = false)
-    private User createdBy;
+    private UserEntity createdBy;
     @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
-    private List<Player> events = new ArrayList<>();
+    private List<Player> players = new ArrayList<>();
 
 }
