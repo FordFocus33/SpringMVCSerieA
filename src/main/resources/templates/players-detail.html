@@ -1,24 +1,21 @@
-<!DOCTYPE html>
 <html
         xmlns:th="http://thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layout}">
-
 <head>
-    <title>Player Info</title>
+    <title>Player Detail</title>
 </head>
 <body class="d-flex flex-column">
-
-<!-- Page Content-->
 <section layout:fragment="body">
     <header class="py-5 bg-light border-bottom mb-4">
         <div class="container">
             <div class="text-center my-5">
                 <h1 class="fw-bolder" th:text="${player.name}"></h1>
-                <p class="lead mb-0">Player tag</p>
+                <p class="lead mb-0">Tribal chief</p>
             </div>
         </div>
     </header>
+    <!-- Page content-->
     <div class="container">
         <div class="row">
             <!-- Blog entries-->
@@ -30,8 +27,10 @@
                         <div class="small text-muted" th:text="${player.createdOn}"></div>
                         <h2 class="card-title">About this player</h2>
                         <p class="card-text" th:text="${player.type}"></p>
-                        <a th:href="@{/players/{playerId}/delete(playerId=${player.id})}" class="btn btn-primary">Delete</a>
-                        <a th:href="@{/players/{playerId}/edit(playerId=${player.id})}" class="btn btn-primary">Edit</a>
+                        <div th:if="${user.id} == ${player.club.createdBy.id}">
+                            <a class="btn btn-primary" th:href="@{/players/{playerId}/edit(playerId=${player.id})}">Edit</a>
+                            <a class="btn btn-primary" th:href="@{/players/{playerId}/delete(playerId=${player.id})}">Delete</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,9 +53,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">Titles</a></li>
-                                    <li><a href="#!">Legacy</a></li>
-                                    <li><a href="#!">Goals</a></li>
+                                    <li><a href="#!">Road Runner</a></li>
+                                    <li><a href="#!">Trial</a></li>
+                                    <li><a href="#!">Marathon</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -71,7 +70,5 @@
         </div>
     </div>
 </section>
-
 </body>
-
 </html>

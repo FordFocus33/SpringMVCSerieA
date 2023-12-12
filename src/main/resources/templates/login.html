@@ -35,8 +35,12 @@
     </style>
     <div class="main">
         <div class="col-md-6 col-sm-12">
-            <div th:if="${param.error}" class="alert alert-success">Invalid username or password</div>
-            <div th:if="${param.logout}" class="alert alert-success">You have been logout!</div>
+            <div th:if="${param.error}" class="alert alert-success">
+                Invalid username and password!
+            </div>
+            <div th:if="${param.logout}" class="alert alert-success">
+                You have been logged out!
+            </div>
             <div class="login-form">
                 <form method="post" role="form" th:action="@{/login}">
                     <div class="form-group">
@@ -57,8 +61,8 @@
                                 placeholder="Password"
                                 name="password">
                     </div>
-                    <button th:href="@{/register}" type="submit" class="btn btn-secondary">Don't have an account already? Register here.</button>
-                    <button th:href="@{/login}" type="submit" class="btn btn-primary">Login</button>
+                    <button th:href="@{/register}" type="submit" class="btn btn-black">Dont have an account already? Register here!</button>
+                    <button type="submit" value="Log in" class="btn btn-secondary">Login</button>
                 </form>
             </div>
         </div>

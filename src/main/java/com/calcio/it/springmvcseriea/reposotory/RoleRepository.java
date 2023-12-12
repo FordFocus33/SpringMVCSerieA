@@ -2,8 +2,10 @@ package com.calcio.it.springmvcseriea.reposotory;
 
 import com.calcio.it.springmvcseriea.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
-    Role findName(String name);
+    Role findByName(String name);
 }

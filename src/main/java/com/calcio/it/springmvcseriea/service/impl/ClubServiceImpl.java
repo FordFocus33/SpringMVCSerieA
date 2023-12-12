@@ -11,6 +11,7 @@ import com.calcio.it.springmvcseriea.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,9 +33,9 @@ public class ClubServiceImpl implements ClubService {
     @Override
     public List<ClubDto> findAllClubs() {
         List<Club> clubs = clubRepository.findAll();
-
-        return clubs.stream().map(ClubMapper::mapToClubDto).collect(Collectors.toList());
+        return clubs.stream().map((club) -> mapToClubDto(club)).collect(Collectors.toList());
     }
+
 
     // Тут у нас изначально должен был приходить username, но в таблице у нас email идет перед username. Поэтому, будем искать по email
     // Так как в SecurityUtil.getSessionUser()
@@ -44,14 +45,12 @@ public class ClubServiceImpl implements ClubService {
         UserEntity user = userRepository.findByEmail(email);
         Club club = mapToClub(clubDto);
         club.setCreatedBy(user);
-
         return clubRepository.save(club);
     }
 
     @Override
     public ClubDto findClubById(Long id) {
         Club club = clubRepository.findById(id).get();
-
         return mapToClubDto(club);
     }
 
@@ -71,8 +70,10 @@ public class ClubServiceImpl implements ClubService {
 
     @Override
     public List<ClubDto> searchClubs(String query) {
-        List<Club> clubs = clubRepository.searchClubs(query);
-
-        return clubs.stream().map(ClubMapper::mapToClubDto).collect(Collectors.toList());
+        List<ClubDto> clubDtos = new ArrayList<>();
+        for (Club club : clubRepository.searchClubs(query)){
+            clubDtos.add(mapToClubDto(club));
+        }
+        return clubDtos;
     }
 }

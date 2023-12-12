@@ -2,13 +2,15 @@ package com.calcio.it.springmvcseriea.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Builder
 public class RegistrationDto {
     private Long id;
     @NotEmpty

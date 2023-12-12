@@ -5,9 +5,13 @@ import com.calcio.it.springmvcseriea.dto.PlayerDto;
 import java.util.List;
 
 public interface PlayerService {
-    void createPlayer(Long clubId, PlayerDto eventDto);
+    void createPlayer(Long clubId, PlayerDto playerDto);
+
     List<PlayerDto> findAllPlayers();
-    PlayerDto findByPlayerId(Long playerId);
+
+    PlayerDto findById(Long id);
+
     void updatePlayer(Long id, PlayerDto playerDto);
-    void deletePlayer(Long playerId);
+
+    void deletePlayer(Long id);
 }
