@@ -24,7 +24,9 @@
                 <div class="card mb-4">
                     <a href="#!"><img class="card-img-top" th:src="${club.photoUrl}" alt="..." /></a>
                     <div class="card-body">
+                        <div th:if="${user.id} == ${club.createdBy.id}">
                         <div class="small text-muted" th:text="${club.createdOn}"></div>
+                        </div>
                         <h2 class="card-title">About this club</h2>
                         <p class="card-text" th:text="${club.content}"></p>
                         <div th:if="${user.id} == ${club.createdBy.id}">
@@ -34,15 +36,14 @@
                     </div>
                 </div>
                 <!-- Nested row for non-featured blog posts-->
-                <div class="row">
+                <div class="row gx-5">
                     <div class="col-lg-6">
                         <!-- Blog post-->
                         <div th:each="player :${club.players}" class="card mb-4">
                             <a href="#!"><img class="card-img-top" th:src="${player.photoUrl}" alt="..." /></a>
                             <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
                                 <h2 th:text="${player.name}" class="card-title h4"></h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                <p th:text="${player.type}" class="card-text"></p>
                                 <a class="btn btn-primary" th:href="@{/players/{playerId}(playerId=${player.id})}">Read more →</a>
                             </div>
                         </div>
