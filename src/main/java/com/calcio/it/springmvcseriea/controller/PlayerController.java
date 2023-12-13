@@ -40,7 +40,7 @@ public class PlayerController {
     }
 
     @PostMapping("/players/{clubId}")
-    public String createPlayer(@PathVariable("clubId") Long id, @ModelAttribute("player") PlayerDto playerDto,
+    public String createPlayer(@PathVariable("clubId") Long id, @Valid @ModelAttribute("player") PlayerDto playerDto,
                               BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             model.addAttribute("player", playerDto);
