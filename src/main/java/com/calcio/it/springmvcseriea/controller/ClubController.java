@@ -19,7 +19,6 @@ import java.util.List;
 @Controller
 public class ClubController {
 
-    // 500 ошибка 11 видео пересмотреть конец где то с 9 минуты
 
     private ClubService clubService;
     private UserService userService;
